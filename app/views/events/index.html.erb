@@ -5,6 +5,7 @@
   <div>
     <p> <%= event.date %> </p>
     <p> <%= event.location %> </p>
+    <p> <%= event.creator.try(:email) %> </p>
   </div>
   <% end %>
 </ul>
