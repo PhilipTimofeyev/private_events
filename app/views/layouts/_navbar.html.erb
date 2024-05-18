@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link"> <%= link_to "My Events", user_path(current_user), method: :get %>
+          <a class="nav-link"> <%= link_to "My Events", user_path(current_user), method: :get if user_signed_in?%>
         </li>
       </ul>
       <ul class="navbar-nav">
