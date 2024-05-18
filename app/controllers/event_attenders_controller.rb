@@ -8,7 +8,7 @@ class EventAttendersController < ApplicationController
 		attendee = current_user
 		@event_attending = attendee.event_attendings.build(attendee_params)
 
-		if	@event_attending.save
+		if @event_attending.save
 			redirect_to event_attenders_path
 		else
 			render :new, status: :unprocessable_entity
@@ -18,6 +18,6 @@ class EventAttendersController < ApplicationController
 	private
 
 	def attendee_params
-	  params.require(:event_attending).permit(:attendee_id, :attended_event_id)
+	  params.require(:event_attending).permit(:attended_event_id)
 	end
 end
