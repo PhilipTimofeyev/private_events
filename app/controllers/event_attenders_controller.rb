@@ -1,5 +1,7 @@
 class EventAttendersController < ApplicationController
 
+	before_action :authenticate_user!, only: [:new, :create]
+	
 	def new
 		@event_attending = current_user.attended_events.first
 	end
