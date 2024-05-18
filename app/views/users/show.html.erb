@@ -10,12 +10,29 @@
   <% end %>
 </ul>
 
-<h3> Attended Events: </h3>
-<ul>
-  <% @user.attended_events.each do |event| %>
-  <div>
-    <p> <%= "Date: #{event.date}" %> </p>
-    <p> <%= "Location: #{event.location}"%> </p>
-  </div>
-  <% end %>
-</ul>
+<h4> Attended Events </h4>
+<div>
+  <ul>
+    <% past_events = @user.attended_events.where(date: ..Date.current) %>
+    <% past_events.each do |event| %>
+    <div>
+      <p> <%= "Date: #{event.date}" %> </p>
+      <p> <%= "Location: #{event.location}"%> </p>
+    </div>
+    <% end %>
+  </ul>
+</div>
+
+<h4> Future Events </h4>
+
+<div>
+  <ul>
+    <% future_events = @user.attended_events.where(date: Date.current..) %>
+    <% future_events.each do |event| %>
+    <div>
+      <p> <%= "Date: #{event.date}" %> </p>
+      <p> <%= "Location: #{event.location}"%> </p>
+    </div>
+    <% end %>
+  </ul>
+</div>
