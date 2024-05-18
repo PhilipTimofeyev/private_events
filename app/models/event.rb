@@ -3,12 +3,7 @@ class Event < ApplicationRecord
 	has_many :attendees, through: :event_attendings, source: :attendee
 	belongs_to :creator, class_name: "User"
 
+	scope :past, -> { where(date: ..Date.current) }
+	scope :future, -> { where(date: Date.current..) }
 
-	def self.past
-		where(date: ..Date.current)
-	end
-
-	def self.future
-		where(date: Date.current..)
-	end
 end
