@@ -6,6 +6,8 @@
     <p> <%= event.date %> </p>
     <p> <%= event.location %> </p>
     <p> <%= event.creator.try(:email) %> </p>
+    <%= button_to "Attend Event", event_attenders_path, params:{ event_attending: {attendee_id: current_user.id, attended_event_id: event.id }}, method: :post%>
+    <p> <%= event.id %> </p>
   </div>
   <% end %>
 </ul>

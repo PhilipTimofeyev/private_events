@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :users
   # resources :events
   resources :events, only: [:new, :create, :index]
+  resources :event_attenders
 end
