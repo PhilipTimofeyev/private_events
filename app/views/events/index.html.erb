@@ -7,8 +7,9 @@
     <p> <%= event.date.strftime('%m/%d/%Y %I:%M %p') %> </p>
     <p> <%= event.location %> </p>
     <p> <%= event.creator.try(:email) %> </p>
-    <%= button_to "Attend Event", event_attenders_path, params:{ event_attending: {attended_event_id: event.id }}, method: :post
-    %>
+    <%= button_to "Attend Event", event_attenders_path, params:{ event_attending: {attended_event_id: event.id }}, method: :post%>
+    <%= button_to 'Unattend Event', '/event_attenders/destroy', method: :delete, params:{ event_attending: {attendee_id: current_user.id, attended_event_id: event.id }}%>
+
     <details>
       <summary>Show Attendees</summary>
     <p> <%= event.attendees.map {|attendee| attendee.email }.join(', ')%> </p>

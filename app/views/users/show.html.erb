@@ -20,8 +20,6 @@
     <div>
       <p> <%= "Date: #{event.date}" %> </p>
       <p> <%= "Location: #{event.location}"%> </p>
-      <p> <%= button_to "Update", edit_event_path(event.id), method: :get %> </p>
-      <p> <%= button_to "Delete", event_path(event), method: :delete %> </p>
     </div>
     <% end %>
   </ul>
@@ -36,8 +34,6 @@
     <div>
       <p> <%= "Date: #{event.date}" %> </p>
       <p> <%= "Location: #{event.location}"%> </p>
-      <p> <%= button_to "Update", edit_event_path(event.id), method: :get %> </p>
-      <p> <%= button_to "Delete", event_path(event), method: :delete %> </p>
     </div>
     <% end %>
   </ul>
