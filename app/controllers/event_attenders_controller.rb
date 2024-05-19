@@ -10,10 +10,10 @@ class EventAttendersController < ApplicationController
 		attendee = current_user
 		@event_attending = attendee.event_attendings.build(attendee_params)
 
-		if @event_attending.save
-			redirect_to event_attenders_path
+		if !EventAttending.where(destroy_params).any? && @event_attending.save
+			redirect_to event_attenders_path, notice: "Event added!"
 		else
-			render :new, status: :unprocessable_entity
+			redirect_to root_path, notice: "Already attending event."
 		end	
 	end
 
@@ -21,7 +21,7 @@ class EventAttendersController < ApplicationController
 	  @event_attending = EventAttending.where(destroy_params)
 	  @event_attending.destroy_all
 
-	  redirect_to root_path, status: :see_other
+	  redirect_to root_path, notice: "Event removed!"
 	end
 
 	private
