@@ -6,4 +6,7 @@ class Event < ApplicationRecord
 	scope :past, -> { where(date: ..Date.current) }
 	scope :future, -> { where(date: Date.current..) }
 
+	validates :date, presence: true
+	validates :location, presence: true
+
 end
