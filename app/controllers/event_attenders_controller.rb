@@ -10,7 +10,7 @@ class EventAttendersController < ApplicationController
 		attendee = current_user
 		@event_attending = attendee.event_attendings.build(attendee_params)
 
-		if EventAttending.where(destroy_params).none? && @event_attending.save
+		if @event_attending.save
 			redirect_to root_path, notice: "Event added!"
 		else
 			redirect_to root_path, notice: "Already attending event."
