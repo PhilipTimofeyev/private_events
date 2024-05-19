@@ -4,7 +4,7 @@
   <h3> Future Events </h3>
   <% Event.future.each do |event| %>
   <div>
-    <p> <%= event.date.strftime('%m/%d/%Y %I:%M %p') %> </p>
+    <p> <%= event.date.strftime('%m/%d/%Y') %> <%= event.event_time.strftime('%I:%M %p') %> </p>
     <p> <%= event.location %> </p>
     <p> <%= event.creator.try(:email) %> </p>
     <%= button_to "Attend Event", event_attenders_path, params:{ event_attending: {attended_event_id: event.id }}, method: :post%>
@@ -22,7 +22,7 @@
   <h3> Past Events </h3>
   <% Event.past.each do |event| %>
   <div>
-    <p> <%= event.date.strftime('%m/%d/%Y %I:%M %p') %> </p>
+    <p> <%= event.date.strftime('%m/%d/%Y') %> <%= event.event_time.strftime('%I:%M %p') %> </p>
     <p> <%= event.location %> </p>
     <p> <%= event.creator.try(:email) %> </p>
     <details>
