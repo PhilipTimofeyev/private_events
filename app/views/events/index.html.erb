@@ -8,15 +8,17 @@
     <p> <%= event.location %> </p>
     <p> <%= event.creator.try(:email) %> </p>
 
-    <% if EventAttending.exists?(attendee_id: current_user.id, attended_event_id: event.id) %>
-      <%= button_to 'Unattend Event', '/event_attenders/destroy', method: :delete, params:{ event_attending: {attendee_id: current_user.id, attended_event_id: event.id }} if user_signed_in?%>
+    <% if user_signed_in? && EventAttending.exists?(attendee_id: current_user.id, attended_event_id: event.id) %>
+      <%= button_to 'Unattend Event', '/event_attenders/destroy', method: :delete, params:{ event_attending: {attendee_id: current_user.id, attended_event_id: event.id }}%>
     <% else %>
       <%= button_to "Attend Event", event_attenders_path, params:{ event_attending: {attended_event_id: event.id }}, method: :post%>
     <% end %>
-    
+
     <details>
       <summary>Show Attendees</summary>
-    <p> <%= event.attendees.map {|attendee| attendee.email }.join(', ')%> </p>
+    <p> <% event.attendees.each do |attendee|%>
+      <li> <%= "#{attendee.first_name} #{attendee.last_name}"%> </li>
+      <% end %>
     </details>
   </div>
   <% end %>
