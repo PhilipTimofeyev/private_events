@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-	before_action :authenticate_user!, only: [:new, :create]
+	before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
 	def index
 		@events = Event.all
@@ -23,6 +23,12 @@ class EventsController < ApplicationController
 
 	def edit
 	   @event = Event.find(params[:id])
+
+	   if current_user == @event.creator
+	   	@event
+	   else
+	   	redirect_to user_path(current_user), notice: "Not authorized to edit this event."
+	   end
 	 end
 
 	 def update
