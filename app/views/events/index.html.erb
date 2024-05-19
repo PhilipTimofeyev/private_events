@@ -8,7 +8,7 @@
     <p> <%= event.location %> </p>
     <p> <%= event.creator.try(:email) %> </p>
     <%= button_to "Attend Event", event_attenders_path, params:{ event_attending: {attended_event_id: event.id }}, method: :post%>
-    <%= button_to 'Unattend Event', '/event_attenders/destroy', method: :delete, params:{ event_attending: {attendee_id: current_user.id, attended_event_id: event.id }}%>
+    <%= button_to 'Unattend Event', '/event_attenders/destroy', method: :delete, params:{ event_attending: {attendee_id: current_user.id, attended_event_id: event.id }} if user_signed_in?%>
 
     <details>
       <summary>Show Attendees</summary>
