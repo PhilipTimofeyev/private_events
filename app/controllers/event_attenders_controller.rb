@@ -21,7 +21,7 @@ class EventAttendersController < ApplicationController
 	  @event_attending = EventAttending.where(destroy_params)
 	  @event_attending.destroy_all
 
-	  redirect_to root_path, notice: "Event removed!"
+	  redirect_back_or_to events_path, notice: "Event removed!"
 	end
 
 	private
