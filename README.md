@@ -1,24 +1,23 @@
-# README
+# Private Events
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Ruby on Rails back-end focused project for The Odin Project curriculum. 
 
-Things you may want to cover:
+Private Events demonstrates creating multiple models using `has_many` with a `through` table to create associations between Users and Events. Users are able to create accounts using the Devise gem, and then are able to create and attend events created by themselves and other users. 
 
-* Ruby version
+This project demonstrates several skills:
 
-* System dependencies
+- Creating the correct associations between models using a through table. 
+- Using Active Record to find and display specific data, such as past/future events, or what users are attending a specific event.
+- Creating class methods vs scopes to retrieve specific queries.
+- Changing what views show based on query data, such as showing an *Attend* button if a User is not attending an event, or an *Unattend* button if a User is attending an event.
 
-* Configuration
 
-* Database creation
 
-* Database initialization
+#### Future Implementations
 
-* How to run the test suite
+In the next version, I would like to:
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Add the ability to make an event private.
+- Allowing Users to invite each other to private events. 
+- DRY up some of the views using partials.
+- Add CSS to make improve the view of the site.
