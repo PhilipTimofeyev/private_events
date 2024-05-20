@@ -16,7 +16,7 @@
 
     <details>
       <summary>Show Attendees</summary>
-    <p> <% event.attendees.each do |attendee|%>
+      <% event.attendees.each do |attendee|%>
       <li> <%= "#{attendee.first_name} #{attendee.last_name}"%> </li>
       <% end %>
     </details>
@@ -33,7 +33,7 @@
     <p> <%= event.creator.try(:email) %> </p>
     <details>
       <summary>Show Attendees</summary>
-    <p> <%= event.attendees.map {|attendee| attendee.email }.join(', ')%> </p>
+      <p> <%= event.attendees.map {|attendee| attendee.email }.join(', ')%> </p>
     </details>
   </div>
   <% end %>

@@ -6,8 +6,10 @@
   <div>
     <p> <%= event.date.strftime('%m/%d/%Y') %> <%= event.event_time.strftime('%I:%M %p') %> </p>
     <p> <%= "Location: #{event.location}"%> </p>
-    <p> <%= button_to "Update", edit_event_path(event.id), method: :get %> </p>
-    <p> <%= button_to "Delete", event_path(event), method: :delete %> </p>
+    <div class="d-flex flex-row">
+      <p> <%= button_to "Update", edit_event_path(event.id), method: :get %> </p>
+      <p> <%= button_to "Delete", event_path(event), method: :delete %> </p>
+    </div>
   </div>
   <% end %>
 </ul>
@@ -34,6 +36,7 @@
     <div>
       <p> <%= "Date: #{event.date.strftime('%m/%d/%Y')} #{event.event_time.strftime('%I:%M %p')}" %> </p>
       <p> <%= "Location: #{event.location}"%> </p>
+      <p> <%= button_to 'Unattend Event', '/event_attenders/destroy', method: :delete, params:{ event_attending: {attendee_id: current_user.id, attended_event_id: event.id }}%> </p>
     </div>
     <% end %>
   </ul>
